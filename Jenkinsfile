@@ -4,7 +4,7 @@ pipeline {
 
 		stage('Create kubernetes cluster') {
 			steps {
-				withAWS(region:'ap-southeast-2', credentials:'aws-static') {
+				withAWS(region:'ap-southeast-2', credentials:'aws-capstone') {
 					sh '''
 						eksctl create cluster \
 						--name capstonecluster \
@@ -24,7 +24,7 @@ pipeline {
 
 		stage('Create configuration file cluster') {
 			steps {
-				withAWS(region:'ap-southeast-2', credentials:'aws-static') {
+				withAWS(region:'ap-southeast-2', credentials:'aws-capstone') {
 					sh '''
 						aws eks --region ap-southeast-2 update-kubeconfig --name capstonecluster
 					'''
